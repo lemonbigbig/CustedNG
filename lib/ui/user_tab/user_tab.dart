@@ -226,6 +226,7 @@ class _UseTabState extends State<UserTab> with AutomaticKeepAliveClientMixin {
   }
 
   Widget _buildDarkModeRadio() {
+    var value = setting.darkMode.fetch();
     final color = MaterialStateProperty.all(resolveWithBackground(context));
     return Row(
       mainAxisAlignment: MainAxisAlignment.end,
@@ -234,19 +235,19 @@ class _UseTabState extends State<UserTab> with AutomaticKeepAliveClientMixin {
         Radio(
           value: 0,
           fillColor: color,
-          groupValue: setting.darkMode.fetch(),
+          groupValue: value,
           onChanged: _onSelection),
         Text('开'),
         Radio(
           value: 1,
           fillColor: color,
-          groupValue: setting.darkMode.fetch(),
+          groupValue: value,
           onChanged: _onSelection),
         Text('关'),
         Radio(
           value: 2,
           fillColor: color,
-          groupValue: setting.darkMode.fetch(),
+          groupValue: value,
           onChanged: _onSelection)
       ],
     );
@@ -256,7 +257,6 @@ class _UseTabState extends State<UserTab> with AutomaticKeepAliveClientMixin {
     if (index == 0) {
       showSnackBar(context, '自动模式仅在Android 10+或iOS 13+有效');
     }
-    final setting = locator<SettingStore>();
     setting.darkMode.put(index);
   }
 

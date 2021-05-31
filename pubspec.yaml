@@ -68,15 +68,14 @@ dependencies:
   webview_cookie_manager: ^2.0.0-nullsafety.0
   flutter_staggered_animations: ^1.0.0
   plain_notification_token: ^0.0.1
-  # jpush_flutter:
-  #   git:
-  #     url: git://github.com/jpush/jpush-flutter-plugin.git
-  #     ref: master
   wifi_ip: ^0.0.1
   add_2_calendar: ^2.1.0
   home_widget: ^0.1.2+1
   flutter_material_color_picker: ^1.0.5
   expand_widget: ^2.1.0
+  xiao_mi_push_plugin: ^2.0.0
+  #hua_wei_push_plugin: ^2.0.1
+  device_info: ^2.0.2
 
 dev_dependencies:
   # flutter_test:

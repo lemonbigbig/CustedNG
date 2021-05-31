@@ -15,6 +15,7 @@ class HomeEntry extends StatelessWidget {
     return MaterialButton(
       onLongPress: longPressAction,
       onPressed: action ?? () {},
+      padding: EdgeInsets.all(0),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[

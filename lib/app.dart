@@ -17,11 +17,13 @@ import 'package:custed2/locator.dart';
 import 'package:custed2/service/custed_service.dart';
 import 'package:custed2/ui/theme.dart';
 import 'package:custed2/ui/widgets/setting_builder.dart';
+import 'package:device_info/device_info.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:home_widget/home_widget.dart';
+//import 'package:hua_wei_push_plugin/hua_wei_push_plugin.dart';
 import 'package:plain_notification_token/plain_notification_token.dart';
-// import 'package:jpush_flutter/jpush_flutter.dart';
+import 'package:xiao_mi_push_plugin/xiao_mi_push_plugin.dart';
 
 bool _shouldEnableDarkMode(BuildContext context, int mode) {
   // print('ddf: ${MediaQuery.platformBrightnessOf(context)}');
@@ -121,11 +123,18 @@ class _CustedState extends State<Custed> with AfterLayoutMixin<Custed> {
 
 Future<void> initPushService(UserDataStore user) async {
   String token = await getToken();
-  if (token == null) {
+  if (token == null && token == '') {
     print('get token failed');
     return;
   }
   await CustedService().sendToken(token, user.username.fetch(), Platform.isIOS);
+}
+
+Future<String> getBrand() async {
+  final device = DeviceInfoPlugin();
+  final info = await device.androidInfo;
+  print('BRAND: ${info.brand}, MODEL: ${info.model}');
+  return info.brand;
 }
 
 Future<String> getToken() async {
@@ -136,6 +145,12 @@ Future<String> getToken() async {
     // wait for user to give notification permission
     await Future.delayed(Duration(seconds: 3));
     return await plainNotificationToken.getToken();
+  } else if (await getBrand() == 'Xiaomi') {
+    await XiaoMiPushPlugin.init(appId: "2882303761518813144", appKey: "5601881368144");
+    return await XiaoMiPushPlugin.getRegId();
   }
   return null;
+  // } else {
+  //   return await HuaWeiPushPlugin.getToken(appId: '104223643');
+  // }
 }

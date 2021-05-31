@@ -13,12 +13,16 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
-    <!-- <permission android:name="cc.xuty.custed2.permission.MIPUSH_RECEIVE"
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" tools:node="remove"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" tools:node="remove"/>
+    <uses-permission android:name="android.permission.VIBRATE" tools:node="remove"/>
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE" tools:node="remove"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK" tools:node="remove"/>
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" tools:node="remove"/>
+
+    <permission android:name="cc.xuty.custed2.permission.MIPUSH_RECEIVE"
                 android:protectionLevel="signature"/>
-    <uses-permission android:name="cc.xuty.custed2.permission.MIPUSH_RECEIVE"/> -->
+    <uses-permission android:name="cc.xuty.custed2.permission.MIPUSH_RECEIVE"/>
 
 
 
@@ -75,25 +79,6 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/provider_install_paths"/>
         </provider> -->
-
-        <service android:name="cc.xuty.custed2.PushService"
-                android:enabled="true"
-                android:exported="false"
-                android:process=":pushcore">
-                <intent-filter>
-                    <action android:name="cn.jiguang.user.service.action" />
-                </intent-filter>
-        </service> 
-
-        <receiver
-            android:name="cc.xuty.custed2.PushReceriver"
-            android:enabled="true" 
-            android:exported="false">
-            <intent-filter>
-                    <action android:name="cn.jpush.android.intent.RECEIVE_MESSAGE" />
-                    <category android:name="cc.xuty.custed2" />
-            </intent-filter>
-        </receiver>
 
         <provider android:name="androidx.core.content.FileProvider"
             tools:replace="android:authorities"
