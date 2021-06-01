@@ -105,5 +105,5 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 }
 
-//apply plugin: 'com.huawei.agconnect'
-//apply plugin: 'com.google.gms.google-services'
+apply plugin: 'com.huawei.agconnect'
+apply plugin: 'com.google.gms.google-services'

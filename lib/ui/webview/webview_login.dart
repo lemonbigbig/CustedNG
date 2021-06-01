@@ -114,6 +114,8 @@ class _WebviewLoginState extends State<WebviewLogin> {
     userData.password.put(this.password);
 
     if (widget.noLogin) {
+      await controller.close();
+      Navigator.of(context).pop(true);
       return;
     }
 
